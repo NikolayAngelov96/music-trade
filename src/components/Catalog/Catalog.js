@@ -1,3 +1,4 @@
+import './Catalog.css';
 
 const Catalog = () => {
 

@@ -1,3 +1,5 @@
+import './Sold.css';
+
 
 const Sold = () => {
 

@@ -1,0 +1,102 @@
+.create {
+    text-align: center;
+    /* background-color: var(--white-color); */
+}
+
+.create-container {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.create-title {
+    font-size: 1.4rem;
+    margin: 2rem 0;
+}
+
+.create-header {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+
+.create-header input{
+    width: 100%;
+    padding: .75rem;
+    border-radius: 6px;
+}
+
+.select-category {
+    display: block;
+    margin: 2rem auto;
+    width: 30%;
+    padding: 1rem .5rem;
+
+    background-color: var(--white-color);
+    border: none;
+    border-radius: 6px;
+}
+
+.create-description {
+    resize: none;
+}
+
+.description-container label {
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: .75rem;
+}
+
+.img-input-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2rem;
+}
+
+.image-container input{
+    width: 100%;
+    padding: 1rem;
+}
+
+.image-container label {
+    display: block;
+    margin: 2rem 0;
+}
+
+.contact-container label {
+    display: block;
+    margin: 2rem 0;
+}
+
+.contact-container input {
+    width: 100%;
+    padding: 1rem;
+}
+
+.contact-container input:last-child {
+    margin-top: 2rem;
+}
+
+.buttons-container {
+    margin: 2rem 0;
+}
+
+/* Style cancel button better */
+.cancel-btn {
+    margin-right: 1.5rem;
+    padding: .75rem .5rem;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: var(--main-bg-color);
+}
+
+.cancel-btn:hover {
+    cursor: pointer;
+    color: var(--purple-color);
+    border-color: var(--purple-color);
+}

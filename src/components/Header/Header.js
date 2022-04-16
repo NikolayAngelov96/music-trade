@@ -1,3 +1,6 @@
+import './Header.css';
+
+import CategoryNav from './CategoryNav';
 
 const Header = () => {
 
@@ -13,13 +16,13 @@ const Header = () => {
                     <input type="text" placeholder="Search" />
                 </div>
 
-                <div className="user">
+                {/* <div className="user">
                     <ul>
                         <li><a href="#">My Sales</a></li>
                         <li><a href="#">Sell</a></li>
                         <li><a id="logoutBtn" href="#">Logout</a></li>
                     </ul>
-                </div>
+                </div> */}
 
                 <div className="guest">
                     <ul>
@@ -29,16 +32,7 @@ const Header = () => {
                 </div>
             </section>
 
-            <section className="secondary-nav">
-                <ul>
-                    <li><a href="#">Guit/Bass</a></li>
-                    <li><a href="#">Drums</a></li>
-                    <li><a href="#">Keys</a></li>
-                    <li><a href="#">Microphones</a></li>
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Music Memorabilia</a></li>
-                </ul>
-            </section>
+            <CategoryNav />
         </>
     )
 }

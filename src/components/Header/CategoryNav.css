@@ -1,0 +1,21 @@
+.secondary-nav {
+    background-color: var(--black-color);
+    padding: 1rem 2rem;
+}
+
+.secondary-nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.secondary-nav ul li a {
+    color: var(--white-color);
+    padding: 0.5rem 1rem;
+}
+
+.secondary-nav ul li a:hover {
+    background-color: var(--purple-color);
+    border-radius: 16px;
+}

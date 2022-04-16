@@ -1,3 +1,5 @@
+import './Details.css';
+import image from '../../assets/luana-azevedo-OYVaNuVoqVw-unsplash.jpg';
 
 const Details = () => {
 
@@ -7,7 +9,7 @@ const Details = () => {
                 <div className="slideshow-container">
 
                     <ul className="carousel-list">
-                        <li className="carousel-item"><img src="./assets/luana-azevedo-OYVaNuVoqVw-unsplash.jpg" alt="" /></li>
+                        <li className="carousel-item"><img src={image} alt="" /></li>
                     </ul>
 
                     <div className="dots">

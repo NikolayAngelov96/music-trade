@@ -1,3 +1,4 @@
+import './Create.css'
 
 const Create = () => {
 

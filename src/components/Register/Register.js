@@ -1,3 +1,4 @@
+import '../Login/Form.css';
 
 const Register = () => {
 
