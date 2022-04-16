@@ -1,5 +1,6 @@
 import './Home.css';
-import homeImage from '../assets/luana-azevedo-OYVaNuVoqVw-unsplash.jpg';
+
+import homeImage from '../../assets/luana-azevedo-OYVaNuVoqVw-unsplash.jpg';
 
 const Home = () => {
 

@@ -2,13 +2,16 @@ import './Header.css';
 
 import CategoryNav from './CategoryNav';
 
+import { Link } from 'react-router-dom';
+
+
 const Header = () => {
 
     return (
         <>
             <section className="header">
                 <div className="common">
-                    <a href="#">Home</a>
+                    <Link to='/'>Home</Link>
                     <p>Welcome, user</p>
                 </div>
 
@@ -18,16 +21,16 @@ const Header = () => {
 
                 {/* <div className="user">
                     <ul>
-                        <li><a href="#">My Sales</a></li>
-                        <li><a href="#">Sell</a></li>
-                        <li><a id="logoutBtn" href="#">Logout</a></li>
+                        <li><Link to='/sales'>My Sales</Link></li>
+                        <li><Link to='/create'>Sell</Link></li>
+                        <li><Link id="logoutBtn" to='/logout'>Logout</Link></li>
                     </ul>
                 </div> */}
 
                 <div className="guest">
                     <ul>
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Register</a></li>
+                        <li><Link to='/login'>Login</Link></li>
+                        <li><Link to='/register'>Register</Link></li>
                     </ul>
                 </div>
             </section>
