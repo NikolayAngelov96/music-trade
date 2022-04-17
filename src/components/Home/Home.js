@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <section className="home">
       <div className="img-container">
-        <img src={homeImage} alt="Guitar image" />
+        <img src={homeImage} alt="Guitar And amp setup" />
       </div>
 
       <div className="title-container">

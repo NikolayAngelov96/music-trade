@@ -1,4 +1,5 @@
 import './App.css';
+import AuthContext from './contexts/AuthContext';
 
 import Header from './components/Header/Header'
 import Home from './components/Home/Home';
@@ -9,27 +10,41 @@ import Catalog from './components/Catalog/Catalog';
 import Details from './components/Details/Details';
 import Sold from './components/Sold/Sold';
 import Buy from './components/Buy/Buy';
+import Logout from './components/Logout/Logout';
 
 import { Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  function login(userData) {
+    setUser(userData);
+  }
+
+  function logout() {
+    setUser(null);
+  }
+
   return (
     <div className="App">
-      <Header />
+      <AuthContext.Provider value={{user, login, logout}}>
+        <Header />
 
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/logout' element={<Logout />} />
+          <Route path='/create' element={<Create />} />
+          <Route path='/details' element={<Details />} />
+          <Route path='/catalog' element={<Catalog />} />
+          <Route path='/catalog/:category' element={<Catalog />} />
+          <Route path='/sales' element={<Sold />} />
+          <Route path='/buy' element={<Buy />} />
+        </Routes>
 
-      {/* // Need to add some nested routes for secondary nav */}
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/create' element={<Create />} />
-        <Route path='/details' element={<Details />} />
-        <Route path='/catalog' element={<Catalog />} />
-        <Route path='/sales' element={<Sold />} />
-        <Route path='/buy' element={<Buy />} />
-      </Routes>
-
+      </AuthContext.Provider>
     </div >
 
   );
