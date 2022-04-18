@@ -1,32 +1,42 @@
 import '../Login/Form.css';
-
 import AuthContext from '../../contexts/AuthContext';
+import * as authService from '../../services/authService/authService';
+
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 
-const Register = () => {
 
-    const { login } = useContext(AuthContext);
+const Register = () => {
+    const { setUserData } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    function onSubmitHandler(e) {
+    async function onSubmitHandler(e) {
         e.preventDefault();
 
         const formData = new FormData(e.target);
 
-        const email = formData.get('email');
+        const username = formData.get('username');
         const password = formData.get('password');
         const rePass = formData.get('rePass');
 
-        if(email === '' || password === '' || rePass === '') {
+        if (username === '' || password === '' || rePass === '') {
             // TODO:
         }
 
-        if(password !== rePass) {
+        if (password !== rePass) {
             // TODO:
         }
 
-        login({email, password});
+        authService.register(username, password)
+            .then(result => {
+                const userData = {
+                    username: result.username,
+                    id: result.objectId,
+                    token: result.sessionToken
+                };
+
+                setUserData(userData);
+            });
 
         navigate('/catalog');
     }
@@ -38,7 +48,7 @@ const Register = () => {
 
             <div className="form-container">
                 <form method="POST" onSubmit={onSubmitHandler}>
-                    <input type="text" name="email" placeholder="Email Address" />
+                    <input type="text" name="username" placeholder="Choose your username" />
                     <input type="password" name="password" placeholder="Password" />
                     <input type="password" name="rePass" placeholder="Repeat Password" />
                     <button className="submit-btn" type="submit">Register</button>

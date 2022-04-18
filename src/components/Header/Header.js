@@ -34,7 +34,7 @@ const Header = () => {
             <section className="header">
                 <div className="common">
                     <Link to='/'>Home</Link>
-                    {user ? <p>Welcome, {user.email}</p> : null}
+                    {user ? <p>Welcome, {user.username}</p> : null}
                     
                 </div>
 

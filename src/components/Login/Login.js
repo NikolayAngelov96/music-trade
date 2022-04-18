@@ -1,24 +1,37 @@
 import './Form.css';
+import AuthContext from '../../contexts/AuthContext'
+import * as authService from '../../services/authService/authService';
 
 import { Link, useNavigate } from 'react-router-dom';
-import AuthContext from '../../contexts/AuthContext';
 import { useContext } from 'react';
 
 const Login = () => {
 
-    const { login } = useContext(AuthContext);
+    const { setUserData } = useContext(AuthContext);
     const navigate = useNavigate();
 
 
-    function onSubmitHandler(e) {
+    async function onSubmitHandler(e) {
         e.preventDefault();
 
         const formData = new FormData(e.target);
 
-        const email = formData.get('email');
+        const username = formData.get('username');
         const password = formData.get('password');
 
-        login({email, password});
+        console.log(username, password);
+
+        authService.login(username, password)
+        .then(data => {
+            const userData = {
+                username: data.username,
+                id: data.objectId,
+                token: data.sessionToken
+            };
+    
+            setUserData(userData);
+        })
+
 
         navigate('/catalog');
     }
@@ -30,7 +43,7 @@ const Login = () => {
 
             <div className="form-container">
                 <form method="POST" onSubmit={onSubmitHandler}>
-                    <input type="text" name="email" placeholder="Email Address" />
+                    <input type="text" name="username" placeholder="Enter your username" />
                     <input type="password" name="password" placeholder="Password" />
                     <button className="submit-btn" type="submit">Log in</button>
                 </form>

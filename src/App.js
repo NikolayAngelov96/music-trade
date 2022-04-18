@@ -18,17 +18,17 @@ import { useState } from 'react';
 function App() {
   const [user, setUser] = useState(null);
 
-  function login(userData) {
+  function setUserData(userData) {
     setUser(userData);
   }
 
-  function logout() {
+  function clearUserData() {
     setUser(null);
   }
 
   return (
     <div className="App">
-      <AuthContext.Provider value={{user, login, logout}}>
+      <AuthContext.Provider value={{user, setUserData, clearUserData}}>
         <Header />
 
         <Routes>
