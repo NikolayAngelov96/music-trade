@@ -25,3 +25,25 @@ export async function getAll() {
     }
 
 }
+
+export async function getOne(id) {
+    try {
+        const res = await fetch(host + `/Catalog/${id}`, {
+            headers: {
+                'X-Parse-Application-Id': xParseAppId,
+                'X-Parse-REST-API-Key': xParseRestApiKey
+            }
+        })
+
+        if(res.ok === false) {
+            const error = await res.json();
+            throw new Error(error.error);
+        }
+
+        return await res.json();
+
+    } catch (err) {
+        alert(err.message);
+        throw err;
+    }
+}

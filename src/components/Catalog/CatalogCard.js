@@ -4,10 +4,10 @@ const CatalogCard = ({
     item
 }) => {
 
-    console.log(item.imageUrl);
+    console.log(item);
     return (
         <div className="card">
-            <img src={item.imageUrl[0]} alt="Instrument" />
+            <img src={item.imageUrl} alt="Instrument" />
 
 
             <div className="item-body">
