@@ -36,9 +36,9 @@ const Register = () => {
                 };
 
                 setUserData(userData);
+                navigate('/catalog');
             });
 
-        navigate('/catalog');
     }
 
     return (

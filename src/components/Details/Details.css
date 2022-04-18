@@ -14,9 +14,9 @@
     display: flex;
     flex-direction: column;
     height: 400px;
-    width: 400px;
-    justify-content: flex-start;
-    align-items: flex-start;
+    width: 600px;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .slideshow-container > * {

@@ -1,11 +1,13 @@
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    padding: 5rem
+};
+
 .lds-dual-ring {
     display: inline-block;
     width: 80px;
     height: 80px;
-
-    position: absolute;
-    top: 50%;
-    left: 50% 
 }
 
 .lds-dual-ring:after {

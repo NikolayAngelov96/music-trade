@@ -30,10 +30,10 @@ const Login = () => {
             };
     
             setUserData(userData);
+            navigate('/catalog');
         })
 
 
-        navigate('/catalog');
     }
 
     return (
