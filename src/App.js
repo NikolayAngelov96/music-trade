@@ -37,7 +37,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/logout' element={<Logout />} />
           <Route path='/create' element={<Create />} />
-          <Route path='/details' element={<Details />} />
+          <Route path='/details/:id' element={<Details />} />
           <Route path='/catalog' element={<Catalog />} />
           <Route path='/catalog/:category' element={<Catalog />} />
           <Route path='/sales' element={<Sold />} />
