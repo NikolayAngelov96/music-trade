@@ -11,7 +11,6 @@ import Details from './components/Details/Details';
 import Sold from './components/Sold/Sold';
 import Buy from './components/Buy/Buy';
 import Logout from './components/Logout/Logout';
-import Spinner from './components/Spinner/Spinner';
 
 import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
@@ -43,7 +42,6 @@ function App() {
           <Route path='/catalog/:category' element={<Catalog />} />
           <Route path='/sales' element={<Sold />} />
           <Route path='/buy' element={<Buy />} />
-          <Route path='/spinner' element={<Spinner />} />
         </Routes>
 
       </AuthContext.Provider>

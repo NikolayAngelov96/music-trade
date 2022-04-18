@@ -42,8 +42,6 @@ const Create = () => {
 
                         <div className="img-input-wrapper">
                             <input type="text" name="imgUrl" placeholder="Paste your image URL here" />
-                            <input type="text" name="imgUrl-second" placeholder="Paste your image URL here" />
-                            <input type="text" name="imgUrl-third" placeholder="Paste your image URL here" />
                         </div>
                     </div>
 
