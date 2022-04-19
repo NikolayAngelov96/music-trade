@@ -46,7 +46,7 @@ const Create = () => {
             ownerId: {
                 "__type": "Pointer",
                 "className": "_User",
-                "objectId": user.token
+                "objectId": user.id
             }
         }
 

@@ -4,7 +4,6 @@ const CatalogCard = ({
     item
 }) => {
 
-    console.log(item);
     return (
         <div className="card">
             <img src={item.imageUrl} alt="Instrument" />

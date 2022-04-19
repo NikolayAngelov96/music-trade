@@ -40,7 +40,7 @@ const Details = () => {
 
                     <h3 className="details-price">{product.price} lv.</h3>
 
-                    {user && user.id === product.objectId
+                    {user && user.id === product.ownerId.objectId
                         ? ownerBtn
                         : <div className="buttons-wrap">
                             <button className="buy-btn">Buy</button>
@@ -50,7 +50,7 @@ const Details = () => {
                     <div className="info-wrap">
                         <p className="contact-title">Contact Info: </p>
                         <p className="contact-phone">Phone: {product.phone}</p>
-                        <p className="contact-email">Email: example@abv.bg</p>
+                        <p className="contact-email">Email: {product.email ? product.email : 'Unknown'}</p>
                     </div>
                 </div>
             </div>
@@ -64,11 +64,10 @@ const Details = () => {
     )
 }
 
-const ownerBtn = (
-    <>
+const ownerBtn = <>
         <button className="edit-btn owner-btn">Edit</button>
         <button className="delete-btn owner-btn">Delete</button>
     </>
-)
+
 
 export default Details;
