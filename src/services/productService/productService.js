@@ -2,7 +2,7 @@ import { xParseAppId, xParseRestApiKey } from '../keys/serverKeys';
 
 const host = 'https://parseapi.back4app.com/classes';
 
-async function request(url, method, data, user) {
+async function request(url, method, user, data) {
 
     const options = {
         method,
@@ -16,7 +16,7 @@ async function request(url, method, data, user) {
         options.headers['X-Parse-Session-Token'] = user.token;
     }
 
-    if(method !== 'GET') {
+    if(method === 'POST'|| method === 'PUT') {
         options.body = JSON.stringify(data);
     }
 
@@ -45,5 +45,13 @@ export async function getOne(id) {
 }
 
 export async function create(data, user) {
-    return request('/Catalog', 'POST', data, user);
+    return request('/Catalog', 'POST', user, data);
+}
+
+export async function remove(id, user) {
+    return request('/Catalog/' + id, 'DELETE', user);
+}
+
+export async function edit(id, data, user) {
+    return request('/Catalog/' + id, 'PUT', user, data);
 }

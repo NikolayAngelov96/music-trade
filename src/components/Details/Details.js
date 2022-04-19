@@ -5,16 +5,20 @@ import AuthContext from '../../contexts/AuthContext';
 
 import * as productService from '../../services/productService/productService';
 import { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+
+import Edit from '../Edit/Edit';
 
 const Details = () => {
 
     const [product, setProduct] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const [showEdit, setShowEdit] = useState(false);
 
     const { user } = useContext(AuthContext);
 
     const param = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         productService.getOne(param.id).then(res => {
@@ -23,8 +27,30 @@ const Details = () => {
         });
     }, [param.id])
 
+    function onDeleteHandler(e) {
+        // TODO: show confirm screen
+    
+        productService.remove(param.id, user)
+            .then(res => navigate('/catalog'))
+    }
+
+    function hideEdit() {
+        setShowEdit(false);
+    }
+    
+    const ownerBtn = (
+        <>
+            <button className="edit-btn owner-btn" onClick={() => setShowEdit(true)}>Edit</button>
+            <button className="delete-btn owner-btn" onClick={onDeleteHandler}>Delete</button>
+        </>
+    )
+
     if (isLoading) {
         return <Spinner />
+    }
+
+    if(showEdit) {
+        return <Edit product={product} hideEdit={hideEdit} user={user} />
     }
 
     return (
@@ -49,12 +75,12 @@ const Details = () => {
 
                     <div className="info-wrap">
                         <p className="contact-title">Contact Info: </p>
-                        <p className="contact-phone">Phone: {product.phone}</p>
+                        <p className="contact-phone">Phone: {product.phone ? product.phone : 'Unknown'}</p>
                         <p className="contact-email">Email: {product.email ? product.email : 'Unknown'}</p>
                     </div>
                 </div>
             </div>
-            
+
             <div className="details-description">
                 <h3>Description:</h3>
                 {product.description}
@@ -63,11 +89,5 @@ const Details = () => {
         </section >
     )
 }
-
-const ownerBtn = <>
-        <button className="edit-btn owner-btn">Edit</button>
-        <button className="delete-btn owner-btn">Delete</button>
-    </>
-
 
 export default Details;
