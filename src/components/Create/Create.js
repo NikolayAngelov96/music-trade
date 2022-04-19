@@ -1,6 +1,61 @@
 import './Create.css'
 
+import * as productService from '../../services/productService/productService';
+
+import AuthContext from '../../contexts/AuthContext';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 const Create = () => {
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    async function onSubmitHandler(e) {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+
+        let {
+            title,
+            price,
+            category,
+            description,
+            imageUrl,
+            email,
+            phone
+        } = Object.fromEntries(formData);
+
+        if (title === '' || price === '' || description === '' || category === '') {
+            return alert('Please fill all required fields');
+        }
+
+        price = Number(price);
+
+        if (price < 0) {
+            return alert('Price cannot be below 0!');
+        }
+
+        const listing = {
+            title,
+            price,
+            category,
+            description,
+            imageUrl,
+            email,
+            phone,
+            ownerId: {
+                "__type": "Pointer",
+                "className": "_User",
+                "objectId": user.token
+            }
+        }
+
+        productService.create(listing, user)
+            .then(res => {
+                navigate('/catalog');
+            })
+    }
+
 
     return (
         <section className="create">
@@ -8,7 +63,7 @@ const Create = () => {
 
             <h3 className="create-title">Create your listing</h3>
             <div className="create-container">
-                <form method="POST">
+                <form method="POST" onSubmit={onSubmitHandler}>
 
                     <div className="create-header">
 
@@ -38,10 +93,10 @@ const Create = () => {
                     </div>
 
                     <div className="image-container">
-                        <label htmlFor="imgUrl">Image URL's:</label>
+                        <label htmlFor="imageUrl">Image URL's:</label>
 
                         <div className="img-input-wrapper">
-                            <input type="text" name="imgUrl" placeholder="Paste your image URL here" />
+                            <input type="text" name="imageUrl" placeholder="Paste your image URL here" />
                         </div>
                     </div>
 
