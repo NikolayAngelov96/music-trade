@@ -5,15 +5,13 @@ import AuthContext from '../../contexts/AuthContext';
 
 import * as productService from '../../services/productService/productService';
 import { useState, useEffect, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
-import Edit from '../Edit/Edit';
 
 const Details = () => {
 
     const [product, setProduct] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-    const [showEdit, setShowEdit] = useState(false);
 
     const { user } = useContext(AuthContext);
 
@@ -33,24 +31,16 @@ const Details = () => {
         productService.remove(param.id, user)
             .then(res => navigate('/catalog'))
     }
-
-    function hideEdit() {
-        setShowEdit(false);
-    }
     
     const ownerBtn = (
         <>
-            <button className="edit-btn owner-btn" onClick={() => setShowEdit(true)}>Edit</button>
+            <Link to={`/edit/${product.objectId}`} className="edit-btn owner-btn">Edit</Link>
             <button className="delete-btn owner-btn" onClick={onDeleteHandler}>Delete</button>
         </>
     )
 
     if (isLoading) {
         return <Spinner />
-    }
-
-    if(showEdit) {
-        return <Edit product={product} hideEdit={hideEdit} user={user} />
     }
 
     return (

@@ -1,14 +1,25 @@
 import * as productService from '../../services/productService/productService'
 
-import { useNavigate } from 'react-router-dom';
+import AuthContext from '../../contexts/AuthContext';
 
-const Edit = ({
-    product,
-    hideEdit,
-    user
-}) => {
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState, useContext } from 'react';
 
+const Edit = () => {
+
+    const [product, setProduct] = useState({});
+    
     const navigate = useNavigate();
+    const param = useParams();
+
+    const { user } = useContext(AuthContext);
+
+    useEffect(() => {
+
+        productService.getOne(param.id)
+            .then(res => setProduct(res));
+
+    }, [param.id])
 
     async function onSubmitHandler(e) {
         e.preventDefault();
@@ -47,12 +58,7 @@ const Edit = ({
 
         productService.edit(product.objectId, listing, user)
             .then(res => {
-                // when navigate to details/productId it not re-rendering with the new info
-                // use different URL for /edit/objectId or should re-direct to /catalog
-                // navigate(`/details/${product.objectId}`);
-                navigate('/catalog');
-
-                hideEdit();
+                navigate(`/details/${product.objectId}`);
             })
     }
 
@@ -72,6 +78,7 @@ const Edit = ({
 
                     </div>
 
+                    {/* Not displaying the correct option */}
                     <select className="select-category" name="category" defaultValue={product.category}>
                         <option value="">--Select Category--</option>
                         <option value="guitar">Guitar</option>
@@ -88,7 +95,7 @@ const Edit = ({
                             Description:
                         </label>
                         <textarea className="create-description" name="description" placeholder="Describe your item..."
-                            cols="77" rows="20">{product.description}</textarea>
+                            cols="77" rows="20" defaultValue={product.description}></textarea>
                     </div>
 
                     <div className="image-container">
@@ -108,7 +115,7 @@ const Edit = ({
 
 
                     <div className="buttons-container">
-                        <button className="cancel-btn" onClick={() => hideEdit()}>Cancel</button>
+                        <button className="cancel-btn">Cancel</button>
                         <button className="submit-btn" type="submit">Edit</button>
                     </div>
                 </form>
