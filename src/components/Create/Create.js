@@ -75,13 +75,13 @@ const Create = () => {
 
                     <select className="select-category" name="category">
                         <option value="">--Select Category--</option>
-                        <option value="guitar">Guitar</option>
+                        <option value="guitars">Guitar</option>
                         <option value="bass">Bass</option>
                         <option value="drums">Drums</option>
                         <option value="keys">Keys</option>
                         <option value="microphones">Microphones</option>
                         <option value="accessories">Accessories</option>
-                        <option value="memorabilia">Memorabilia</option>
+                        <option value="music">Memorabilia</option>
                     </select>
 
                     <div className="description-container">

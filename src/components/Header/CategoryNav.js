@@ -7,7 +7,7 @@ const CategoryNav = () => {
     return (
         <section className="secondary-nav">
             <ul>
-                <li><Link to="/catalog/guitar">Guit/Bass</Link></li>
+                <li><Link to="/catalog/guitars">Guit/Bass</Link></li>
                 <li><Link to="/catalog/drums">Drums</Link></li>
                 <li><Link to="/catalog/keys">Keys</Link></li>
                 <li><Link to="/catalog/microphones">Microphones</Link></li>

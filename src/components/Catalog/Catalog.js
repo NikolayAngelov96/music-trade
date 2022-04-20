@@ -5,19 +5,23 @@ import Spinner from '../Spinner/Spinner';
 import * as productService from '../../services/productService/productService';
 
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 const Catalog = () => {
 
     const [ products, setProducts ] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const param = useParams();
+
     useEffect(() => {
-        productService.getAll()
+        productService.getAllByCategory(param.category)
         .then(res => {
             setIsLoading(false);
             setProducts(res.results)
         })
-    }, []);
+
+    }, [param.category]);
 
     if(isLoading) {
         return <Spinner />
@@ -25,7 +29,7 @@ const Catalog = () => {
     return (
         <section className="catalog">
 
-            <h1 className="catalog-title">Guitar</h1>
+            <h1 className="catalog-title">{param.category}</h1>
 
             <div className="product-grid">
                 

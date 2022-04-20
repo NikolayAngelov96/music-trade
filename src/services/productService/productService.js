@@ -36,8 +36,12 @@ async function request(url, method, user, data) {
     }
 }
 
-export async function getAll() {
-    return request('/Catalog');
+export async function getAllByCategory(query) {
+    if(query) {
+        return request(`/Catalog?where={"category":"${query}"}`);
+    } else {
+        return request('/Catalog');
+    }
 }
 
 export async function getOne(id) {
