@@ -12,7 +12,7 @@
 .product-grid {
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(5, minmax(15rem, 1fr));
 }
 
 .product-grid img {
@@ -42,6 +42,7 @@
 .item-title {
     font-weight: 500;
     font-size: 1.2rem;
+    text-align: center;
 }
 
 .item-price {
