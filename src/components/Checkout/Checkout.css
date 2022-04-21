@@ -1,0 +1,44 @@
+.bought-product {
+    padding: 3rem;
+
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.page-title {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.title-wrapper {
+    padding: 2rem;
+    background-color: white;
+    width: 50%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.check-container {
+    padding: 2rem;
+    background-color: white;
+}
+
+.check-container form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1rem;
+
+}
+
+.check-container input {
+    padding: .5rem;
+}
+
+.products-title {
+    text-align: center;
+}
+

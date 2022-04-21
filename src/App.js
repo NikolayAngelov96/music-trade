@@ -10,7 +10,7 @@ import Edit from './components/Edit/Edit';
 import Catalog from './components/Catalog/Catalog';
 import Details from './components/Details/Details';
 import Sold from './components/Sold/Sold';
-import Buy from './components/Buy/Buy';
+import Checkout from './components/Checkout/Checkout';
 import Logout from './components/Logout/Logout';
 
 import RouteGuard from './components/Common/RouteGuard';
@@ -48,7 +48,7 @@ function App() {
             <Route path='/edit/:id' element={<Edit />} />
           </Route>
           <Route path='/sales' element={<Sold />} />
-          <Route path='/buy' element={<Buy />} />
+          <Route path='/checkout/:id' element={<Checkout />} />
         </Routes>
 
       </AuthContext.Provider>

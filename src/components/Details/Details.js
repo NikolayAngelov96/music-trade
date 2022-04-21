@@ -59,7 +59,7 @@ const Details = () => {
                     {user && user.id === product.ownerId.objectId
                         ? ownerBtn
                         : <div className="buttons-wrap">
-                            <button className="buy-btn">Buy</button>
+                            <Link to={`/checkout/${product.objectId}`} className="buy-btn">Buy</Link>
                         </div>
                     }
 
