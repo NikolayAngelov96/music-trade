@@ -29,21 +29,13 @@ const Checkout = () => {
             lastName,
             address,
             buyerPhone: phone,
-            product: {
-                "__type": "Pointer",
-                "className": "Catalog",
-                "objectId": item.objectId
-            },
-            owner: {
-                "__type": "Pointer",
-                "className": "_User",
-                "objectId": item.ownerId.objectId
-            },
+            productName: item.title,
+            productPrice: item.price,
             ownerId: item.ownerId.objectId
         }
 
         await productService.purchase(data);
-        navigate('/');
+        navigate('/catalog');
     }
 
 

@@ -65,5 +65,5 @@ export async function purchase(data) {
 }
 
 export async function getSold(user) {
-    return request(`/Sales?where={"ownerId":"${user.objectId}"}`, 'GET', user);
+    return request(`/Sales?where={"ownerId":"${user.id}"}`, 'GET', user);
 }

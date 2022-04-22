@@ -1,6 +1,6 @@
 import './Catalog.css';
-import CatalogCard from './CatalogCard';
 import Spinner from '../Spinner/Spinner';
+import CatalogCard from './CatalogCard';
 
 import * as productService from '../../services/productService/productService';
 
@@ -34,7 +34,7 @@ const Catalog = () => {
             <div className="product-grid">
                 
                 {products.length > 0
-                    ?   products.map(prod => <CatalogCard key={prod.objectId} item={prod}/>)
+                    ?   products.map(item => <CatalogCard key={item.objectId} item={item}/>)
                     : <h2>No Instrument's in the database yet!</h2>
                 }
             </div>

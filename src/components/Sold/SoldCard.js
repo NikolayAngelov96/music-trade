@@ -1,20 +1,21 @@
 
 
-const SoldCard = () => {
-
+const SoldCard = ({
+    item
+}) => {
 
     return (
         <div className="item">
 
             <div className="item-info">
-                <h3 className="sold-title">Fender Bass</h3>
-                <p className="sold-price">Price: 1000lv</p>
+                <h3 className="sold-title">{item.productName}</h3>
+                <p className="sold-price">Price: {item.productPrice}lv</p>
             </div>
 
             <div className="buyer-info">
-                <h3 className="buyer-name">Name: Nikolay Angelov</h3>
-                <h4 className="buyer-address">Address: Daskal Dimo 7, Pleven, Bulgaria</h4>
-                <h4 className="buyer-phone">Phone: 0987654321</h4>
+                <h3 className="buyer-name">Name: {item.firstName} {item.lastName}</h3>
+                <h4 className="buyer-address">Address: {item.address}</h4>
+                <h4 className="buyer-phone">Phone: {item.buyerPhone}</h4>
             </div>
 
         </div>
