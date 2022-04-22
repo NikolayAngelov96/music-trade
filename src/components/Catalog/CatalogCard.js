@@ -15,7 +15,7 @@ const CatalogCard = ({
                 <p className="item-price">{item.price}lv</p>
 
                 <div className="buttons">
-                    <button className="buy-btn">Buy</button>
+                    <Link to={`/checkout/${item.objectId}`} className="buy-btn">Buy</Link>
                     <Link to={`/details/${item.objectId}`} className="details-btn">Details</Link>
                 </div>
 

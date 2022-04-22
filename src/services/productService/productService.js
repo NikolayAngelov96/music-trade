@@ -59,3 +59,11 @@ export async function remove(id, user) {
 export async function edit(id, data, user) {
     return request('/Catalog/' + id, 'PUT', user, data);
 }
+
+export async function purchase(data) {
+    return request('/Sales', 'POST', null, data);
+}
+
+export async function getSold(user) {
+    return request(`/Sales?where={"ownerId":"${user.objectId}"}`, 'GET', user);
+}
