@@ -39,7 +39,7 @@ const Checkout = () => {
     }
 
 
-    // I can get the owner from the product(it has a pointer to the ownerId);
+
     return (
         <>
             <h1 className="page-title">Checkout</h1>

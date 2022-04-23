@@ -12,6 +12,7 @@ import Details from './components/Details/Details';
 import Sold from './components/Sold/Sold';
 import Checkout from './components/Checkout/Checkout';
 import Logout from './components/Logout/Logout';
+import NotFound from './components/NotFound/NotFound';
 
 import RouteGuard from './components/Common/RouteGuard';
 
@@ -49,6 +50,7 @@ function App() {
           </Route>
           <Route path='/sales' element={<Sold />} />
           <Route path='/checkout/:id' element={<Checkout />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
 
       </AuthContext.Provider>
