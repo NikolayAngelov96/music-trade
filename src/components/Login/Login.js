@@ -1,5 +1,5 @@
 import './Form.css';
-import AuthContext from '../../contexts/AuthContext'
+import AuthContext from '../../contexts/AuthContext';
 import * as authService from '../../services/authService/authService';
 
 import { Link, useNavigate } from 'react-router-dom';
@@ -10,7 +10,6 @@ const Login = () => {
     const { setUserData } = useContext(AuthContext);
     const navigate = useNavigate();
 
-
     async function onSubmitHandler(e) {
         e.preventDefault();
 
@@ -19,19 +18,25 @@ const Login = () => {
         const username = formData.get('username');
         const password = formData.get('password');
 
-        console.log(username, password);
+        if(username === '') {
+            return alert('Username is required!')
+        }
+
+        if(password === '') {
+            return alert("Password is required!")
+        }
 
         authService.login(username, password)
-        .then(data => {
-            const userData = {
-                username: data.username,
-                id: data.objectId,
-                token: data.sessionToken
-            };
-    
-            setUserData(userData);
-            navigate('/catalog');
-        })
+            .then(data => {
+                const userData = {
+                    username: data.username,
+                    id: data.objectId,
+                    token: data.sessionToken
+                };
+
+                setUserData(userData);
+                navigate('/catalog');
+            })
 
 
     }

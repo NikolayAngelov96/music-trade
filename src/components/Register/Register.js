@@ -20,11 +20,11 @@ const Register = () => {
         const rePass = formData.get('rePass');
 
         if (username === '' || password === '' || rePass === '') {
-            // TODO:
+            return alert('All fields are required!')
         }
 
         if (password !== rePass) {
-            // TODO:
+            return alert('Passwords don\'t match!');
         }
 
         authService.register(username, password)

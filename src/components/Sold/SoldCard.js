@@ -13,6 +13,7 @@ const SoldCard = ({
             </div>
 
             <div className="buyer-info">
+                <h3>Send to:</h3>
                 <h3 className="buyer-name">Name: {item.firstName} {item.lastName}</h3>
                 <h4 className="buyer-address">Address: {item.address}</h4>
                 <h4 className="buyer-phone">Phone: {item.buyerPhone}</h4>

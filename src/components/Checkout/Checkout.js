@@ -35,6 +35,7 @@ const Checkout = () => {
         }
 
         await productService.purchase(data);
+        await productService.remove(params.id);
         navigate('/catalog');
     }
 

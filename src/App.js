@@ -19,6 +19,7 @@ import RouteGuard from './components/Common/RouteGuard';
 import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 
+
 function App() {
   const [user, setUser] = useState(null);
 
@@ -34,7 +35,6 @@ function App() {
     <div className="App">
       <AuthContext.Provider value={{ user, setUserData, clearUserData }}>
         <Header />
-
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
@@ -44,7 +44,7 @@ function App() {
           <Route path='/catalog' element={<Catalog />} />
           <Route path='/catalog/:category' element={<Catalog />} />
 
-          <Route element={<RouteGuard user={user}/>}>
+          <Route element={<RouteGuard user={user} />}>
             <Route path='/create' element={<Create />} />
             <Route path='/edit/:id' element={<Edit />} />
           </Route>
@@ -52,7 +52,6 @@ function App() {
           <Route path='/checkout/:id' element={<Checkout />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
-
       </AuthContext.Provider>
     </div >
 
