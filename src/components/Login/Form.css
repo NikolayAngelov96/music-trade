@@ -8,6 +8,8 @@
     flex-direction: column;
     gap: 2rem;
     padding: 2rem 3rem;
+
+    position: relative;
 }
 
 .form-title {
@@ -57,4 +59,8 @@
 
 .register-link:hover, .login-link:hover {
     color: var(--purple-color);
+}
+
+.error-message {
+    color: red;
 }
