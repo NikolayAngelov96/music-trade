@@ -1,5 +1,6 @@
 import './Form.css';
 import AuthContext from '../../contexts/AuthContext';
+import { NotificationContext } from '../../contexts/NotificationContext';
 import * as authService from '../../services/authService/authService';
 
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,6 +9,7 @@ import { useContext } from 'react';
 const Login = () => {
 
     const { setUserData } = useContext(AuthContext);
+    const { addNotification, types } = useContext(NotificationContext);
     const navigate = useNavigate();
 
     async function onSubmitHandler(e) {
@@ -35,6 +37,7 @@ const Login = () => {
                 };
 
                 setUserData(userData);
+                addNotification('You loggen in successfully!', types.success);
                 navigate('/catalog');
             })
 

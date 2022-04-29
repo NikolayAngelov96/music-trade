@@ -1,5 +1,7 @@
 import './App.css';
+
 import AuthContext from './contexts/AuthContext';
+import { NotificationProvider } from './contexts/NotificationContext';
 
 import Header from './components/Header/Header'
 import Home from './components/Home/Home';
@@ -13,6 +15,7 @@ import Sold from './components/Sold/Sold';
 import Checkout from './components/Checkout/Checkout';
 import Logout from './components/Logout/Logout';
 import NotFound from './components/NotFound/NotFound';
+import Notification from './components/Common/Notification';
 
 import RouteGuard from './components/Common/RouteGuard';
 
@@ -34,24 +37,29 @@ function App() {
   return (
     <div className="App">
       <AuthContext.Provider value={{ user, setUserData, clearUserData }}>
-        <Header />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/logout' element={<Logout />} />
-          <Route path='/details/:id' element={<Details />} />
-          <Route path='/catalog' element={<Catalog />} />
-          <Route path='/catalog/:category' element={<Catalog />} />
+        <NotificationProvider>
+          <Header />
+          
+          <Notification />
 
-          <Route element={<RouteGuard user={user} />}>
-            <Route path='/create' element={<Create />} />
-            <Route path='/edit/:id' element={<Edit />} />
-          </Route>
-          <Route path='/sales' element={<Sold />} />
-          <Route path='/checkout/:id' element={<Checkout />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/logout' element={<Logout />} />
+            <Route path='/details/:id' element={<Details />} />
+            <Route path='/catalog' element={<Catalog />} />
+            <Route path='/catalog/:category' element={<Catalog />} />
+
+            <Route element={<RouteGuard user={user} />}>
+              <Route path='/create' element={<Create />} />
+              <Route path='/edit/:id' element={<Edit />} />
+            </Route>
+            <Route path='/sales' element={<Sold />} />
+            <Route path='/checkout/:id' element={<Checkout />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </NotificationProvider>
       </AuthContext.Provider>
     </div >
 
