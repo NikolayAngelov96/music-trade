@@ -40,6 +40,9 @@ const Login = () => {
                 addNotification('You loggen in successfully!', types.success);
                 navigate('/catalog');
             })
+            .catch(err => {
+                addNotification(err.message, types.error);
+            })
 
 
     }

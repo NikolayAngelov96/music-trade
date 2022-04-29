@@ -39,10 +39,11 @@
     gap: .5rem
 }
 
-.item-title {
+.item-title.item-title {
     font-weight: 500;
     font-size: 1.2rem;
     text-align: center;
+    color: black;
 }
 
 .item-price {
@@ -53,7 +54,7 @@
     margin-top: 1rem;
 }
 
-.buy-btn {
+.buy-btn.buy-btn {
     padding: .5rem 1rem;
     background-color: var(--black-color);
     color: var(--white-color);
@@ -68,11 +69,12 @@
     cursor: pointer;
 }
 
-.details-btn {
+.details-btn.details-btn {
     margin-left: 1rem;
     border: none;
     border-bottom: 2px solid black;
     background-color: var(--main-bg-color);
+    color: black;
 }
 
 .details-btn:hover {
