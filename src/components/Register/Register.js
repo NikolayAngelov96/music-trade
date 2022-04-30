@@ -1,5 +1,6 @@
 import '../Login/Form.css';
 import AuthContext from '../../contexts/AuthContext';
+import { NotificationContext } from '../../contexts/NotificationContext';
 import * as authService from '../../services/authService/authService';
 
 import { Link, useNavigate } from 'react-router-dom';
@@ -13,6 +14,8 @@ const initialValues = {
 
 const Register = () => {
     const { setUserData } = useContext(AuthContext);
+    const { addNotification, types } = useContext(NotificationContext);
+
     const navigate = useNavigate();
 
     const [inputs, setInputs] = useState(initialValues);
@@ -30,7 +33,11 @@ const Register = () => {
                     }
 
                     setUserData(userData);
+                    addNotification('You registered successfully', types.success);
                     navigate('/catalog');
+                })
+                .catch(err => {
+                    addNotification(err.message, types.error);
                 })
         } else {
             setIsSubmited(false);
@@ -72,37 +79,6 @@ const Register = () => {
         setIsSubmited(true);
 
     }
-
-    // async function onSubmitHandler(e) {
-    //     e.preventDefault();
-
-    //     const formData = new FormData(e.target);
-
-    //     const username = formData.get('username');
-    //     const password = formData.get('password');
-    //     const rePass = formData.get('rePass');
-
-
-    //     if (username === '' || password === '' || rePass === '') {
-    //         return alert('All fields are required!')
-    //     }
-
-    //     if (password !== rePass) {
-    //         return alert('Passwords don\'t match!');
-    //     }
-
-    //     authService.register(username, password)
-    //         .then(result => {
-    //             const userData = {
-    //                 username: result.username,
-    //                 id: result.objectId,
-    //                 token: result.sessionToken
-    //             };
-
-    //             setUserData(userData);
-    //             navigate('/catalog');
-    //         });
-    // }
 
     return (
         <section className="form">

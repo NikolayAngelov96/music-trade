@@ -3,11 +3,13 @@ import './Create.css'
 import * as productService from '../../services/productService/productService';
 
 import AuthContext from '../../contexts/AuthContext';
+import { NotificationContext } from '../../contexts/NotificationContext';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
     const { user } = useContext(AuthContext);
+    const { addNotification, types } = useContext(NotificationContext);
     const navigate = useNavigate();
 
     async function onSubmitHandler(e) {
@@ -26,13 +28,17 @@ const Create = () => {
         } = Object.fromEntries(formData);
 
         if (title === '' || price === '' || description === '' || category === '') {
-            return alert('Please fill all required fields');
+            // return alert('Please fill all required fields');
+            addNotification('Please fill all fileds marked with \"*\" !', types.warning)
+            return;
         }
 
         price = Number(price);
 
         if (price < 0) {
-            return alert('Price cannot be below 0!');
+            // return alert('Price cannot be below 0!');
+            addNotification('Price cannot be below 0!', types.warning);
+            return;
         }
 
         const listing = {
@@ -52,6 +58,7 @@ const Create = () => {
 
         productService.create(listing, user)
             .then(res => {
+                addNotification('Listing added successfully! Good luck with your sale!', types.success);
                 navigate('/catalog');
             })
     }
@@ -67,14 +74,14 @@ const Create = () => {
 
                     <div className="create-header">
 
-                        <label htmlFor="title">Title:</label> <input type="text" name="title" />
+                        <label htmlFor="title">Title*:</label> <input type="text" name="title" />
 
-                        <label htmlFor="price">Price:</label> <input type="text" name="price" />
+                        <label htmlFor="price">Price*:</label> <input type="text" name="price" />
 
                     </div>
 
                     <select className="select-category" name="category">
-                        <option value="">--Select Category--</option>
+                        <option value="">--Select Category*--</option>
                         <option value="guitars">Guitar</option>
                         <option value="bass">Bass</option>
                         <option value="drums">Drums</option>
@@ -86,7 +93,7 @@ const Create = () => {
 
                     <div className="description-container">
                         <label htmlFor="description">
-                            Description:
+                            Description*:
                         </label>
                         <textarea className="create-description" name="description" placeholder="Describe your item..."
                             cols="77" rows="20"></textarea>

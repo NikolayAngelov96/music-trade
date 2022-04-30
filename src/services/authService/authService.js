@@ -3,28 +3,6 @@ import { xParseAppId, xParseRestApiKey } from '../keys/serverKeys';
 const host = 'https://parseapi.back4app.com';
 
 export async function login(username, password) {
-    // return fetch(host + '/login', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'X-Parse-Application-Id': xParseAppId,
-    //         'X-Parse-REST-API-Key': xParseRestApiKey
-    //     },
-    //     body: JSON.stringify({ username, password })
-    // }).then(res => {
-    //     if (res.ok === false) {
-    //         const error = res.json();
-    //         throw new Error(error.error);
-    //     }
-
-    //     return res.json();
-    // }).catch(err => {
-    //     console.log(err);
-    //     alert(err.message);
-    //     throw err;
-    // });
-
-
     try {
         const res = await fetch(host + '/login', {
             method: 'POST',
@@ -36,7 +14,7 @@ export async function login(username, password) {
             body: JSON.stringify({ username, password })
         });
 
-        if(res.ok === false) {
+        if (res.ok === false) {
             const error = await res.json();
             throw new Error(error.error);
         }
@@ -49,26 +27,27 @@ export async function login(username, password) {
 
 };
 
-export function register(username, password) {
-    return fetch(host + '/users', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Parse-Application-Id': xParseAppId,
-            'X-Parse-REST-API-Key': xParseRestApiKey
-        },
-        body: JSON.stringify({ username, password })
-    }).then(res => {
+export async function register(username, password) {
+    try {
+        const res = await fetch(host + '/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Parse-Application-Id': xParseAppId,
+                'X-Parse-REST-API-Key': xParseRestApiKey
+            },
+            body: JSON.stringify({ username, password })
+        });
+
         if (res.ok === false) {
-            const error = res.json();
+            const error = await res.json();
             throw new Error(error.error);
         }
 
-        return res.json();
-    }).catch(err => {
-        alert(err.message);
+        return await res.json();
+    } catch (err) {
         throw err;
-    })
+    }
 }
 
 export function logout() {

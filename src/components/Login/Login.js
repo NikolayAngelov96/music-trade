@@ -20,12 +20,10 @@ const Login = () => {
         const username = formData.get('username');
         const password = formData.get('password');
 
-        if(username === '') {
-            return alert('Username is required!')
-        }
-
-        if(password === '') {
-            return alert("Password is required!")
+        if(username === '' || password === '') {
+            // return alert('Username is required!')
+            addNotification('All fields are required!', types.warning)
+            return
         }
 
         authService.login(username, password)

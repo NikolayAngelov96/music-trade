@@ -14,7 +14,7 @@ const Notification = () => {
         <Toast className="d-inline-block m-1" bg={notification.type} onClose={hideNotification}>
             <Toast.Header>
                 <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-                <strong className="me-auto">{notification.type === 'danger' ? 'Oops!' : notification.type}</strong>
+                <strong className="me-auto">{notification.type === 'danger' ? 'Oops!' : notification.type.toUpperCase()}</strong>
             </Toast.Header>
             <Toast.Body className='text-white'>
                 {notification.message}
