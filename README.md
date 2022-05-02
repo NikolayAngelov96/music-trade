@@ -56,7 +56,7 @@ password: 123456
 The **Register** page contains a form for user registration. You can create account by entering **username** and **password**.
 But only if there are no empty fields and the username don't exist already.
 
-**Register page example:
+**Register** page example:
 
 ![registerPage](https://user-images.githubusercontent.com/103751145/166165818-e2ece545-6e92-42c3-9383-049ae393130e.jpg)
 
@@ -72,3 +72,50 @@ All users will be greeted from the static **Home** page.
 
 ![homePage](https://user-images.githubusercontent.com/103751145/166166127-b5fb2554-87bb-4735-a872-9aa11524cf7a.jpg)
 
+### Catalog
+
+The **Catalog page** displays a list of all instruments in the selected category. 
+You can use the secondary navbar to navigate through the different categories:
+
+**Guitar/Bass** example:
+
+![catalogGuitar](https://user-images.githubusercontent.com/103751145/166201611-ea1eba48-06f9-4c66-a5ef-b9611f01420c.jpg)
+
+All users can see the listings, and have access to the **Details** page.
+
+### Details
+
+The **Details** page displays information about a particular instrument.
+
+![details](https://user-images.githubusercontent.com/103751145/166202598-32b72966-958c-49be-bef1-86afd7adbae5.jpg)
+
+
+The **creator** of the listing will see **`edit`** and **`delete`** buttons
+
+![detailsOwner](https://user-images.githubusercontent.com/103751145/166202938-8d70b112-5ae4-443d-b11e-4448f40d9185.jpg)
+
+### Create
+
+The **Sell** page is available only for logged-in users. It contains a form for creating a new listing.
+
+![create](https://user-images.githubusercontent.com/103751145/166203643-0550791f-dacf-4056-8766-6cc2c7806cb9.jpg)
+
+Every listing should contain:
+
+```sh
+ title,
+ price,
+ category,
+ description
+```
+The other fields are optional.
+
+### Edit
+
+The **Edit** page allows the owner of the listing to **edit** and **update** the info about the musical instrument.
+
+### Delete
+
+The **Delete** action is available to logged-in users, for listing they have created.
+
+When author clicks on **`delete`** the listing will be deleted from the system.
