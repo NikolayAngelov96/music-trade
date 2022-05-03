@@ -35,7 +35,7 @@ const Login = () => {
                 };
 
                 setUserData(userData);
-                addNotification('You loggen in successfully!', types.success);
+                addNotification('You logged in successfully!', types.success);
                 navigate('/catalog');
             })
             .catch(err => {

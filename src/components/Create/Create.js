@@ -28,15 +28,13 @@ const Create = () => {
         } = Object.fromEntries(formData);
 
         if (title === '' || price === '' || description === '' || category === '') {
-            // return alert('Please fill all required fields');
-            addNotification('Please fill all fileds marked with \"*\" !', types.warning)
+            addNotification('Please fill all fileds marked with "*" !', types.warning)
             return;
         }
 
         price = Number(price);
 
         if (price < 0) {
-            // return alert('Price cannot be below 0!');
             addNotification('Price cannot be below 0!', types.warning);
             return;
         }
