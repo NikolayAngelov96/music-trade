@@ -16,10 +16,13 @@ And leave info where they want the instrument to be delivered and their phone nu
  
 **Guests**
 - Can **`buy`** a product without registration.
+- Can **browse** the products and see **details** about each product.
  
 ### Implementation Details
 
 The app is based on [REACT](https://reactjs.org/), and [Back4App](https://www.back4app.com/) for back-end.
+
+I also used [React-Bootstrap](https://react-bootstrap.github.io/) for **Modal** and **Toast**.
 
 "Music Trade" is SPA Web Application, bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -118,4 +121,23 @@ The **Edit** page allows the owner of the listing to **edit** and **update** the
 
 The **Delete** action is available to logged-in users, for listing they have created.
 
-When author clicks on **`delete`** the listing will be deleted from the system.
+When author clicks on **`delete`** modal will show up asking him to confirm his action.
+
+**Modal** example:
+
+![modal](https://user-images.githubusercontent.com/103751145/166420679-e35239b2-d659-45f9-9299-90bfbebd9687.jpg)
+
+After confirmation from the user his listing will be deleted from the system.
+
+### Toast
+
+After a certain action from the user the app will "toast" him a message, wheter a **success**, **warning** or **error**.
+
+Example for successful **login**:
+
+![toast](https://user-images.githubusercontent.com/103751145/166420236-c363ebb7-9a7d-437a-96bc-1f7d755d2b68.jpg)
+
+Example for error message:
+
+![errorToast](https://user-images.githubusercontent.com/103751145/166420309-74b43f94-831a-4d7f-bf5f-8a82358037e2.jpg)
+
