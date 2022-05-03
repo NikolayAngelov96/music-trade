@@ -5,23 +5,27 @@ import CatalogCard from './CatalogCard';
 import * as productService from '../../services/productService/productService';
 
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 const Catalog = () => {
 
     const [ products, setProducts ] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [searchParams] = useSearchParams();
 
-    const param = useParams();
+    const params = useParams();
 
     useEffect(() => {
-        productService.getAllByCategory(param.category)
+        const search = searchParams.get('search');
+        setIsLoading(true);
+
+        productService.getAllByCategory(params.category, search)
         .then(res => {
             setIsLoading(false);
             setProducts(res.results)
         })
 
-    }, [param.category]);
+    }, [params.category, searchParams]);
 
     if(isLoading) {
         return <Spinner />
@@ -29,7 +33,7 @@ const Catalog = () => {
     return (
         <section className="catalog">
 
-            <h1 className="catalog-title">{param.category}</h1>
+            <h1 className="catalog-title">{params.category}</h1>
 
             <div className="product-grid">
                 

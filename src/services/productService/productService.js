@@ -36,7 +36,10 @@ async function request(url, method, user, data) {
     }
 }
 
-export async function getAllByCategory(query) {
+export async function getAllByCategory(query, search) {
+    if(search) {
+        return request(`/Catalog?where={"title":{"$text":{"$search":{"$term": "${search}"}}}}`);
+    }
     if(query) {
         return request(`/Catalog?where={"category":"${query}"}`);
     } else {

@@ -50,6 +50,8 @@ function App() {
             <Route path='/details/:id' element={<Details />} />
             <Route path='/catalog' element={<Catalog />} />
             <Route path='/catalog/:category' element={<Catalog />} />
+            {/* Search query */}
+            <Route path='/catalog?search=' element={<Catalog />} />
 
             <Route element={<RouteGuard user={user} />}>
               <Route path='/create' element={<Create />} />
