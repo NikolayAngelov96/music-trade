@@ -2,11 +2,14 @@ import './Checkout.css';
 
 import * as productService from '../../services/productService/productService';
 
-import { useEffect, useState } from 'react';
+import { NotificationContext } from '../../contexts/NotificationContext';
+
+import { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
     const [item, setItem] = useState({});
+    const { addNotification, types } = useContext(NotificationContext);
     const params = useParams();
     const navigate = useNavigate();
 
@@ -17,29 +20,35 @@ const Checkout = () => {
     async function onSubmitHandler(e) {
         e.preventDefault();
 
-        const formData = new FormData(e.target);
-        const { firstName, lastName, address, phone } = Object.fromEntries(formData);
+        try {
+            const formData = new FormData(e.target);
+            const { firstName, lastName, address, phone } = Object.fromEntries(formData);
 
-        if (firstName === '' || lastName === '' || address === '' || phone === '') {
-            return alert('All fields are required');
+            if (firstName === '' || lastName === '' || address === '' || phone === '') {
+                addNotification('All fields are required', types.warning);
+                return
+            }
+
+            const data = {
+                firstName,
+                lastName,
+                address,
+                buyerPhone: phone,
+                productName: item.title,
+                productPrice: item.price,
+                ownerId: item.ownerId.objectId
+            }
+
+            await productService.purchase(data);
+
+            addNotification('Successful purchase!', types.success);
+
+            await productService.remove(params.id);
+            navigate('/catalog');
+        } catch (err) {
+            addNotification(err.message, types.error)
         }
-
-        const data = {
-            firstName,
-            lastName,
-            address,
-            buyerPhone: phone,
-            productName: item.title,
-            productPrice: item.price,
-            ownerId: item.ownerId.objectId
-        }
-
-        await productService.purchase(data);
-        await productService.remove(params.id);
-        navigate('/catalog');
     }
-
-
 
     return (
         <>
