@@ -1,6 +1,7 @@
 import * as productService from '../../services/productService/productService'
 
 import AuthContext from '../../contexts/AuthContext';
+import { NotificationContext } from '../../contexts/NotificationContext';
 
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
@@ -13,13 +14,19 @@ const Edit = () => {
     const param = useParams();
 
     const { user } = useContext(AuthContext);
+    const { addNotification, types } = useContext(NotificationContext);
 
     useEffect(() => {
 
         productService.getOne(param.id)
             .then(res => setProduct(res));
 
-    }, [param.id])
+    }, [param.id]);
+
+    function onCancel(e) {
+        e.preventDefault();
+        navigate(`/details/${param.id}`);
+    }
 
     async function onSubmitHandler(e) {
         e.preventDefault();
@@ -37,13 +44,15 @@ const Edit = () => {
         } = Object.fromEntries(formData);
 
         if (title === '' || price === '' || description === '' || category === '') {
-            return alert('Please fill all required fields');
+            addNotification('Please fill all fields marked with "*".', types.warning);
+            return
         }
 
         price = Number(price);
 
         if (price < 0) {
-            return alert('Price cannot be below 0!');
+            addNotification('Price cannot be below 0.', types.warning);
+            return
         }
 
         const listing = {
@@ -58,6 +67,7 @@ const Edit = () => {
 
         productService.edit(product.objectId, listing, user)
             .then(res => {
+                addNotification('You successfully edited your listing.', types.success);
                 navigate(`/details/${product.objectId}`);
             })
     }
@@ -66,7 +76,7 @@ const Edit = () => {
         <section className="create">
 
 
-            <h3 className="create-title">Create your listing</h3>
+            <h3 className="create-title">Edit your listing</h3>
             <div className="create-container">
                 <form method="POST" onSubmit={onSubmitHandler}>
 
@@ -87,7 +97,7 @@ const Edit = () => {
                         <option value="keys">Keys</option>
                         <option value="microphones">Microphones</option>
                         <option value="accessories">Accessories</option>
-                        <option value="memorabilia">Memorabilia</option>
+                        <option value="music">Memorabilia</option>
                     </select>
 
                     <div className="description-container">
@@ -115,7 +125,7 @@ const Edit = () => {
 
 
                     <div className="buttons-container">
-                        <button className="cancel-btn">Cancel</button>
+                        <button className="cancel-btn" onClick={onCancel}>Cancel</button>
                         <button className="submit-btn" type="submit">Edit</button>
                     </div>
                 </form>

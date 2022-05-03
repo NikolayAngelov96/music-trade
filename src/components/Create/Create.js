@@ -12,6 +12,11 @@ const Create = () => {
     const { addNotification, types } = useContext(NotificationContext);
     const navigate = useNavigate();
 
+    function onCancel(e) {
+        e.preventDefault();
+        navigate('/');
+    }
+
     async function onSubmitHandler(e) {
         e.preventDefault();
 
@@ -114,7 +119,7 @@ const Create = () => {
 
 
                     <div className="buttons-container">
-                        <button className="cancel-btn">Cancel</button>
+                        <button className="cancel-btn" onClick={onCancel}>Cancel</button>
                         <button className="submit-btn" type="submit">Create</button>
                     </div>
                 </form>
