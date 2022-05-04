@@ -1,6 +1,5 @@
 .create {
     text-align: center;
-    /* background-color: var(--white-color); */
 }
 
 .create-container {
@@ -86,7 +85,6 @@
     margin: 2rem 0;
 }
 
-/* Style cancel button better */
 .cancel-btn {
     margin-right: 1.5rem;
     padding: .75rem .5rem;

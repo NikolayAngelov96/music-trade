@@ -39,7 +39,7 @@ function App() {
       <AuthContext.Provider value={{ user, setUserData, clearUserData }}>
         <NotificationProvider>
           <Header />
-          
+
           <Notification />
 
           <Routes>
@@ -55,8 +55,9 @@ function App() {
             <Route element={<RouteGuard user={user} />}>
               <Route path='/create' element={<Create />} />
               <Route path='/edit/:id' element={<Edit />} />
+              <Route path='/sales' element={<Sold />} />
             </Route>
-            <Route path='/sales' element={<Sold />} />
+
             <Route path='/checkout/:id' element={<Checkout />} />
             <Route path='*' element={<NotFound />} />
           </Routes>

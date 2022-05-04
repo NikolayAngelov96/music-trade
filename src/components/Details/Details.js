@@ -28,7 +28,6 @@ const Details = () => {
     }, [param.id])
 
     function onDeleteHandler(e) {
-        // TODO: show confirm screen
 
         productService.remove(param.id, user)
             .then(res => navigate('/catalog'))

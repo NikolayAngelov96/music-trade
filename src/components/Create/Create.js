@@ -103,7 +103,7 @@ const Create = () => {
                     </div>
 
                     <div className="image-container">
-                        <label htmlFor="imageUrl">Image URL's:</label>
+                        <label htmlFor="imageUrl">Image URL:</label>
 
                         <div className="img-input-wrapper">
                             <input type="text" name="imageUrl" placeholder="Paste your image URL here" />

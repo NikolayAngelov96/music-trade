@@ -82,15 +82,15 @@ const Edit = () => {
 
                     <div className="create-header">
 
-                        <label htmlFor="title">Title:</label> <input type="text" name="title" defaultValue={product.title} />
+                        <label htmlFor="title">Title*:</label> <input type="text" name="title" defaultValue={product.title} />
 
-                        <label htmlFor="price">Price:</label> <input type="text" name="price" defaultValue={product.price} />
+                        <label htmlFor="price">Price*:</label> <input type="text" name="price" defaultValue={product.price} />
 
                     </div>
 
                     {/* Not displaying the correct option */}
                     <select className="select-category" name="category" defaultValue={product.category}>
-                        <option value="">--Select Category--</option>
+                        <option value="">--Select Category*--</option>
                         <option value="guitar">Guitar</option>
                         <option value="bass">Bass</option>
                         <option value="drums">Drums</option>
@@ -102,14 +102,14 @@ const Edit = () => {
 
                     <div className="description-container">
                         <label htmlFor="description">
-                            Description:
+                            Description*:
                         </label>
                         <textarea className="create-description" name="description" placeholder="Describe your item..."
                             cols="77" rows="20" defaultValue={product.description}></textarea>
                     </div>
 
                     <div className="image-container">
-                        <label htmlFor="imageUrl">Image URL's:</label>
+                        <label htmlFor="imageUrl">Image URL:</label>
 
                         <div className="img-input-wrapper">
                             <input type="text" name="imageUrl" placeholder="Paste your image URL here" defaultValue={product.imageUrl} />

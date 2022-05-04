@@ -21,7 +21,6 @@ const Login = () => {
         const password = formData.get('password');
 
         if(username === '' || password === '') {
-            // return alert('Username is required!')
             addNotification('All fields are required!', types.warning)
             return
         }
