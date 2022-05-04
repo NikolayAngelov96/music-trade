@@ -34,11 +34,11 @@ You can use the navigation to change the current page(view).
 
 **Guest** navigation example:
 
-![guestNavbar](https://user-images.githubusercontent.com/103751145/166165250-a5c78bc4-440a-4f0b-920f-789ec517a348.jpg)
+![guestNavbar](https://user-images.githubusercontent.com/103751145/166735892-301ef003-53bc-4ebb-a2ac-80cf7664b6ce.jpg)
 
 **User** navigation example:
 
-![loginNavbar](https://user-images.githubusercontent.com/103751145/166165367-babb462b-076d-4d34-9d6f-57c34c73e838.jpg)
+![loggedNavbar](https://user-images.githubusercontent.com/103751145/166737409-2033e2bc-4672-4227-80dc-686389f01c80.jpg)
 
 ### Login
 
@@ -52,7 +52,7 @@ password: 123456
 
 **Login** page example:
 
-![loginPage](https://user-images.githubusercontent.com/103751145/166165689-963335b8-a484-4e30-82c4-e24ce8ded984.jpg)
+![login](https://user-images.githubusercontent.com/103751145/166738619-5a59a223-1d6b-4537-b1c9-6afd7351f2e0.jpg)
 
 ### Register
 
@@ -61,7 +61,7 @@ But only if there are no empty fields and the username don't exist already.
 
 **Register** page example:
 
-![registerPage](https://user-images.githubusercontent.com/103751145/166165818-e2ece545-6e92-42c3-9383-049ae393130e.jpg)
+![register](https://user-images.githubusercontent.com/103751145/166739555-87412f06-c9eb-48cc-ac62-1880888765f6.jpg)
 
 If the **login** or **registration** was successful, the user will be redirect to the **Catalog** page where he can browse all the listings.
 
@@ -73,7 +73,7 @@ The **Logout** action is available to logged-in users and upon success they will
 
 All users will be greeted from the static **Home** page.
 
-![homePage](https://user-images.githubusercontent.com/103751145/166166127-b5fb2554-87bb-4735-a872-9aa11524cf7a.jpg)
+![home](https://user-images.githubusercontent.com/103751145/166740210-0b17522b-3b41-4a29-8a69-f785ddcdd8e8.jpg)
 
 ### Catalog
 
@@ -90,12 +90,12 @@ All users can see the listings, and have access to the **Details** page.
 
 The **Details** page displays information about a particular instrument.
 
-![details](https://user-images.githubusercontent.com/103751145/166202598-32b72966-958c-49be-bef1-86afd7adbae5.jpg)
+![details](https://user-images.githubusercontent.com/103751145/166740430-568596ba-d4b2-44e8-954f-273fd9673d23.jpg)
 
 
 The **creator** of the listing will see **`edit`** and **`delete`** buttons
 
-![detailsOwner](https://user-images.githubusercontent.com/103751145/166202938-8d70b112-5ae4-443d-b11e-4448f40d9185.jpg)
+![ownerDetails](https://user-images.githubusercontent.com/103751145/166740840-dde1c49f-f9da-47c4-8976-cfcd99707cf5.jpg)
 
 ### Create
 
@@ -125,7 +125,7 @@ When author clicks on **`delete`** modal will show up asking him to confirm his 
 
 **Modal** example:
 
-![modal](https://user-images.githubusercontent.com/103751145/166420679-e35239b2-d659-45f9-9299-90bfbebd9687.jpg)
+![modal](https://user-images.githubusercontent.com/103751145/166741070-34f862db-efce-4273-82c7-c48d4b36f065.jpg)
 
 After confirmation from the user his listing will be deleted from the system.
 
@@ -135,9 +135,9 @@ After a certain action from the user the app will "toast" him a message, wheter 
 
 Example for successful **login**:
 
-![toast](https://user-images.githubusercontent.com/103751145/166420236-c363ebb7-9a7d-437a-96bc-1f7d755d2b68.jpg)
+![successToast](https://user-images.githubusercontent.com/103751145/166741701-62d87348-2372-42fa-99d6-cca09a1f4432.jpg)
 
 Example for error message:
 
-![errorToast](https://user-images.githubusercontent.com/103751145/166420309-74b43f94-831a-4d7f-bf5f-8a82358037e2.jpg)
+![errorToast](https://user-images.githubusercontent.com/103751145/166741731-368c7dbf-c0a2-4d78-b6f1-f3bcf54ca591.jpg)
 
